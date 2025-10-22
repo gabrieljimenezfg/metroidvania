@@ -6,22 +6,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     private Rigidbody2D rb;
     private Animator animator;
+    private int jumpCount;
+    private bool isGrounded;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float groundDistance = 0.5f;
+
+    // Temp
+    private int maxJumps = 1;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator =  GetComponent<Animator>();
     }
 
     void Start()
     {
-        
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        rb.linearVelocity = speed * horizontal * Vector2.right;
+        rb.linearVelocity = new Vector2(speed * horizontal, rb.linearVelocity.y);
+
         if (horizontal == 0f)
         {
             animator.SetBool("IsRunning", false);
@@ -34,9 +41,27 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
-        } else if (horizontal > 0)
+        }
+        else if (horizontal > 0)
         {
             transform.eulerAngles = Vector3.zero;
+        }
+
+        if (Input.GetButtonDown("Jump") && jumpCount < maxJumps)
+        {
+            jumpCount++;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, groundDistance);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].transform.tag == "Ground")
+            {
+                jumpCount = 0;
+                break;
+            }
         }
     }
 }
