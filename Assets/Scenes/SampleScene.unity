@@ -9592,8 +9592,8 @@ Tilemap:
   - first: {x: 76, y: 4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9852,8 +9852,8 @@ Tilemap:
   - first: {x: 76, y: 5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10112,8 +10112,8 @@ Tilemap:
   - first: {x: 76, y: 6, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10372,8 +10372,8 @@ Tilemap:
   - first: {x: 76, y: 7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10633,11 +10633,11 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 17
     m_Data: {fileID: 11400000, guid: b77bf7cdf06e37047b2cbce67cc26fb2, type: 2}
-  - m_RefCount: 32
+  - m_RefCount: 36
     m_Data: {fileID: 11400000, guid: 1b5f32cdf4be92f4ebdf5c0ea8ed89a5, type: 2}
   - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: e8fe2a0bd459df9438d642bf1ef69a87, type: 2}
-  - m_RefCount: 11
+  - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 918fe62e80a9fa1449b36e2542f20fe7, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 68990f48eef601b4d8475fced46b87bc, type: 2}
@@ -10682,11 +10682,11 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 17
     m_Data: {fileID: -7190719572971877601, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
-  - m_RefCount: 32
+  - m_RefCount: 36
     m_Data: {fileID: -4457526041281723274, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
   - m_RefCount: 15
     m_Data: {fileID: 8488225499019129969, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
-  - m_RefCount: 11
+  - m_RefCount: 7
     m_Data: {fileID: -5987668019317818230, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -10862,30 +10862,6 @@ CompositeCollider2D:
       - X: 760000000
         Y: 80000000
       - X: 760000000
-        Y: 70312496
-      - X: 761249984
-        Y: 70000000
-      - X: 760000000
-        Y: 70000000
-      - X: 760000000
-        Y: 60312500
-      - X: 761249984
-        Y: 60000000
-      - X: 760000000
-        Y: 60000000
-      - X: 760000000
-        Y: 50312500
-      - X: 761249984
-        Y: 50000000
-      - X: 760000000
-        Y: 50000000
-      - X: 760000000
-        Y: 40312500
-      - X: 761249984
-        Y: 40000000
-      - X: 760000000
-        Y: 40000000
-      - X: 760000000
         Y: 30312500
       - X: 761249984
         Y: 30000000
@@ -11009,18 +10985,6 @@ CompositeCollider2D:
     - - {x: 97.99997, y: -3}
       - {x: 97.99997, y: 8}
       - {x: 76, y: 7.9999704}
-      - {x: 76.00002, y: 7.0312448}
-      - {x: 76.12463, y: 7}
-      - {x: 76, y: 6.9999704}
-      - {x: 76.00002, y: 6.0312448}
-      - {x: 76.12463, y: 6}
-      - {x: 76, y: 5.999971}
-      - {x: 76.00002, y: 5.0312448}
-      - {x: 76.12463, y: 5}
-      - {x: 76, y: 4.999971}
-      - {x: 76.00002, y: 4.0312448}
-      - {x: 76.12463, y: 4}
-      - {x: 76, y: 3.999971}
       - {x: 76.00002, y: 3.0312448}
       - {x: 76.125, y: 3}
       - {x: 77, y: 2.9999707}
@@ -11270,7 +11234,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 82.9, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11290,8 +11254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   playerTransform: {fileID: 1974729106}
   cameraOffset: {x: 0, y: 2, z: -10}
-  minX: -10
-  maxX: 400
+  minX: 3
+  maxX: 83
   minY: -10
   maxY: 400
 --- !u!1 &619394800
