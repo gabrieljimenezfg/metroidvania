@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private int jumpCount;
-    private bool isGrounded;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
 
@@ -52,15 +51,30 @@ public class PlayerController : MonoBehaviour
             jumpCount++;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-
+        
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, groundDistance);
+        bool isGrounded = false;
 
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].transform.tag == "Ground")
             {
-                jumpCount = 0;
+                isGrounded = true;
                 break;
+            }
+        }
+
+        if (isGrounded)
+        {
+            jumpCount = 0;
+            animator.SetBool("IsJumping", false);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", true);
+            if (jumpCount == 0)
+            {
+                jumpCount++;
             }
         }
     }
