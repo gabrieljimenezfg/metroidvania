@@ -1,17 +1,20 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EscapatrajoController : EnemyController
+public class PeterController : EnemyController
 {
     private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
 
+    
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform spearSpawnPoint;
     private new void Awake()
     {
         base.Awake();
     }
+
     private new void Update()
     {
-        base.Update();
+        base.Update();    
         if (isAttacking)
         {
             var isInStopRange = CheckIfIsInStopDistanceRange();
@@ -20,5 +23,10 @@ public class EscapatrajoController : EnemyController
                 SetIsAttacking(false);
             }
         }
+    }
+
+    public void ThrowProjectile()
+    {
+        Instantiate(projectilePrefab, spearSpawnPoint.position, spearSpawnPoint.rotation);
     }
 }
