@@ -34,7 +34,6 @@ public class EnemyController : MonoBehaviour
             }
             else if (direction.x < 0)
             {
-                // rb.linearVelocity = Vector2.left * speed;
                 rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);        
                 transform.eulerAngles = Vector3.zero;
             }
