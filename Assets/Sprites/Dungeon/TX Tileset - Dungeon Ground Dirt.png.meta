@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 6b755b8a83bbe2a439a1937b19e9de82
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2728262713099798660
+    second: TX Tileset - Dungeon Ground Dirt_0
+  - first:
+      213: -7888887792625545423
+    second: TX Tileset - Dungeon Ground Dirt_1
+  - first:
+      213: -7801241015443497339
+    second: TX Tileset - Dungeon Ground Dirt_2
+  - first:
+      213: -7872385371127396084
+    second: TX Tileset - Dungeon Ground Dirt_3
+  - first:
+      213: -4651629214670854242
+    second: TX Tileset - Dungeon Ground Dirt_4
+  - first:
+      213: -6691648270416226122
+    second: TX Tileset - Dungeon Ground Dirt_5
+  - first:
+      213: 7070042108709974900
+    second: TX Tileset - Dungeon Ground Dirt_6
+  - first:
+      213: -6987069768898909936
+    second: TX Tileset - Dungeon Ground Dirt_7
+  - first:
+      213: 6554313174451486085
+    second: TX Tileset - Dungeon Ground Dirt_8
+  - first:
+      213: 5383906935946435619
+    second: TX Tileset - Dungeon Ground Dirt_9
+  - first:
+      213: -2270251690579275213
+    second: TX Tileset - Dungeon Ground Dirt_10
+  - first:
+      213: 7229695651267481378
+    second: TX Tileset - Dungeon Ground Dirt_11
+  - first:
+      213: -4067065377600512421
+    second: TX Tileset - Dungeon Ground Dirt_12
+  - first:
+      213: 4647276101179305043
+    second: TX Tileset - Dungeon Ground Dirt_13
+  - first:
+      213: -4213481869030322939
+    second: TX Tileset - Dungeon Ground Dirt_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 415
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488c14c8b7cbcd520800000000000000
+      internalID: 2728262713099798660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 447
+        width: 66
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f83a7895a058290800000000000000
+      internalID: -7888887792625545423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_2
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 447
+        width: 39
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e584311ac6cb390800000000000000
+      internalID: -7801241015443497339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_3
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 479
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0948f2f63bafb290800000000000000
+      internalID: -7872385371127396084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_4
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 447
+        width: 46
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e97e6b8efd7127fb0800000000000000
+      internalID: -4651629214670854242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_5
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 448
+        width: 34
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b8dbf71a5d7223a0800000000000000
+      internalID: -6691648270416226122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 287
+        width: 97
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47336b4d6d5dd1260800000000000000
+      internalID: 7070042108709974900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_7
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 370
+        width: 57
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 019e8e37011f80f90800000000000000
+      internalID: -6987069768898909936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_8
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 0
+        width: 385
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58df7dd1b1995fa50800000000000000
+      internalID: 6554313174451486085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 42
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32c59d445da77ba40800000000000000
+      internalID: 5383906935946435619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_10
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 202
+        width: 68
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332da40ad127e70e0800000000000000
+      internalID: -2270251690579275213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_11
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 159
+        width: 45
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22f0cf7e3e9055460800000000000000
+      internalID: 7229695651267481378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 95
+        width: 97
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ed4d95691ee87c0800000000000000
+      internalID: -4067065377600512421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_13
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 145
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c64ffddf07e7040800000000000000
+      internalID: 4647276101179305043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset - Dungeon Ground Dirt_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 31
+        width: 97
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50d06e86094b685c0800000000000000
+      internalID: -4213481869030322939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TX Tileset - Dungeon Ground Dirt_0: 2728262713099798660
+      TX Tileset - Dungeon Ground Dirt_1: -7888887792625545423
+      TX Tileset - Dungeon Ground Dirt_10: -2270251690579275213
+      TX Tileset - Dungeon Ground Dirt_11: 7229695651267481378
+      TX Tileset - Dungeon Ground Dirt_12: -4067065377600512421
+      TX Tileset - Dungeon Ground Dirt_13: 4647276101179305043
+      TX Tileset - Dungeon Ground Dirt_14: -4213481869030322939
+      TX Tileset - Dungeon Ground Dirt_2: -7801241015443497339
+      TX Tileset - Dungeon Ground Dirt_3: -7872385371127396084
+      TX Tileset - Dungeon Ground Dirt_4: -4651629214670854242
+      TX Tileset - Dungeon Ground Dirt_5: -6691648270416226122
+      TX Tileset - Dungeon Ground Dirt_6: 7070042108709974900
+      TX Tileset - Dungeon Ground Dirt_7: -6987069768898909936
+      TX Tileset - Dungeon Ground Dirt_8: 6554313174451486085
+      TX Tileset - Dungeon Ground Dirt_9: 5383906935946435619
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameData
 {
     [SerializeField] private float playerMaxLife,
+        playerMaxJumps,
         playerCurrentLife,
         playerMaxMana,
         playerCurrentMana,
         playerDamage,
         fireballDamage,
         heavyDamage;
+
 
     public float PlayerCurrentLife
     {
@@ -52,5 +54,11 @@ public class GameData
     {
         get => heavyDamage;
         set => heavyDamage = value;
+    }
+
+    public float PlayerMaxJumps
+    {
+        get => playerMaxJumps;
+        set => playerMaxJumps = value;
     }
 }

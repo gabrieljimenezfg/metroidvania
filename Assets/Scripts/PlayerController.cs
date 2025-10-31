@@ -20,20 +20,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
     private float fireballTimer;
-
-    // Temp
-    private int maxJumps = 1;
-    public float mana;
-    public float maxMana;
+    
+    private LevelManager levelManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        fireballTimer = fireballCooldown;
     }
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     void CheckMovement()
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
 
-        if (Input.GetButtonDown("Jump") && jumpCount < maxJumps)
+        if (Input.GetButtonDown("Jump") && jumpCount < GameManager.Instance.GameDataObject.PlayerMaxJumps)
         {
             jumpCount++;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -70,9 +69,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("FireBall"))
         {
-            if (fireballTimer >= fireballCooldown && mana >= fireballManaCost)
+            if (fireballTimer >= fireballCooldown && GameManager.Instance.GameDataObject.PlayerCurrentMana >= fireballManaCost)
             {
-                mana -= fireballManaCost;
+                levelManager.UpdateMana();
+                GameManager.Instance.GameDataObject.PlayerCurrentMana -= fireballManaCost;
                 Instantiate(fireballPrefab, spawnPoint.position, spawnPoint.rotation);
                 fireballTimer = 0;
             }
@@ -176,10 +176,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         GameManager.Instance.GameDataObject.PlayerCurrentLife -= damageTaken;
+        levelManager.UpdateLife();
         if (GameManager.Instance.GameDataObject.PlayerCurrentLife <= 0)
         {
             animator.SetTrigger(PlayerDied);
-            // game over panel
         }
         else
         {
