@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     protected Transform player;
     public float stopDistance;
     public bool isAttacking;
+    private bool isDead;
 
     public void Awake()
     {
@@ -24,6 +25,8 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
+        if (isDead) return;
+        
         if (playerDetected && !isAttacking)
         {
             Vector3 direction = player.position - transform.position;
@@ -80,5 +83,29 @@ public class EnemyController : MonoBehaviour
         var direction = player.position - transform.position;
         var distanceSquared = direction.sqrMagnitude;
         return distanceSquared <= Mathf.Pow(stopDistance, 2);        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+        }
+    }
+
+    public void TakeDamage(float damageTaken)
+    {
+        life -= damageTaken;
+        if (life <= 0)
+        {
+            animator.SetTrigger("Died");
+            rb.simulated = false;
+            GetComponent<Collider2D>().enabled = false;
+            isDead = true;
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
+        }
     }
 }

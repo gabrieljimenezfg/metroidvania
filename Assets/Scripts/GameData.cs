@@ -1,6 +1,16 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public class GameData
 {
-    private float playerMaxLife, playerCurrentLife, playerMaxMana, playerCurrentMana;
+    [SerializeField] private float playerMaxLife,
+        playerCurrentLife,
+        playerMaxMana,
+        playerCurrentMana,
+        playerDamage,
+        fireballDamage,
+        heavyDamage;
 
     public float PlayerCurrentLife
     {
@@ -24,5 +34,23 @@ public class GameData
     {
         get => playerMaxMana;
         set => playerMaxMana = value;
+    }
+
+    public float PlayerDamage
+    {
+        get => playerDamage;
+        set => playerDamage = value;
+    }
+
+    public float FireballDamage
+    {
+        get => fireballDamage;
+        set => fireballDamage = value;
+    }
+
+    public float HeavyDamage
+    {
+        get => heavyDamage;
+        set => heavyDamage = value;
     }
 }

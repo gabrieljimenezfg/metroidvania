@@ -12,13 +12,17 @@ public class EscapatrajoController : EnemyController
     private new void Update()
     {
         base.Update();
-        if (isAttacking)
+        // if (isAttacking)
+        // {
+        // }
+    }
+
+    public void FinishAttack()
+    {
+        var isInStopRange = CheckIfIsInStopDistanceRange();
+        if (!isInStopRange)
         {
-            var isInStopRange = CheckIfIsInStopDistanceRange();
-            if (!isInStopRange)
-            {
-                SetIsAttacking(false);
-            }
+            SetIsAttacking(false);
         }
     }
 }

@@ -12096,6 +12096,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1971930152987108162, guid: c94c0501846bdc0419f44778876de36d, type: 3}
+      propertyPath: life
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971930152987108162, guid: c94c0501846bdc0419f44778876de36d, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6103321433490498504, guid: c94c0501846bdc0419f44778876de36d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.81
@@ -12344,6 +12352,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2893022704483384429, guid: aa0d1e2881a8b1b4fa79f128c166c492, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3975544248848397583, guid: aa0d1e2881a8b1b4fa79f128c166c492, type: 3}
       propertyPath: m_Name
       value: Escapatrajo
@@ -12845,6 +12857,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dea37f8765fbd154eacf919a092438fd, type: 3}
+--- !u!1001 &5873586747694089857
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7589707275881735258, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.81249
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46982
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985808687941409923, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: gameData.heavyDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985808687941409923, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: gameData.playerDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985808687941409923, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: gameData.playerMaxLife
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985808687941409923, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: gameData.fireballDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985808687941409923, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: gameData.playerCurrentLife
+      value: 100
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -12858,3 +12947,4 @@ SceneRoots:
   - {fileID: 1788106856}
   - {fileID: 1538637429}
   - {fileID: 1736971496}
+  - {fileID: 5873586747694089857}

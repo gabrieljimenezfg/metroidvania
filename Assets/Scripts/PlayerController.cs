@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int DamageTaken = Animator.StringToHash("DamageTaken");
+    private static readonly int PlayerDied = Animator.StringToHash("PlayerDied");
+
     [SerializeField] private float speed;
     private Rigidbody2D rb;
     private Animator animator;
@@ -12,11 +15,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject fireballPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireballManaCost;
-    
+
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
-    private float fireballTimer; 
+    private float fireballTimer;
 
     // Temp
     private int maxJumps = 1;
@@ -163,7 +166,24 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy hit");
+            var animatorComboCount = animator.GetInteger("Combo");
+            var damageToHit = animatorComboCount > 0 ? GameManager.Instance.GameDataObject.PlayerDamage : GameManager.Instance.GameDataObject.HeavyDamage;
+
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage(damageToHit);
+        }
+    }
+
+    public void TakeDamage(float damageTaken)
+    {
+        GameManager.Instance.GameDataObject.PlayerCurrentLife -= damageTaken;
+        if (GameManager.Instance.GameDataObject.PlayerCurrentLife <= 0)
+        {
+            animator.SetTrigger(PlayerDied);
+            // game over panel
+        }
+        else
+        {
+            animator.SetTrigger(DamageTaken);
         }
     }
 }

@@ -30,6 +30,10 @@ public class Fireball : MonoBehaviour
     {
         if (other.transform.tag == "Player") return;
 
+        if (other.TryGetComponent(out EnemyController enemy))
+        {
+            enemy.TakeDamage(GameManager.Instance.GameDataObject.FireballDamage);
+        }
         StartDeathAnimation();
     }
 
