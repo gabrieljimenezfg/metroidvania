@@ -1,0 +1,17 @@
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class NextLevelTrigger : MonoBehaviour
+{
+    [SerializeField] private int levelIndex;
+    [SerializeField] private int doorPoint;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {   
+            GameManager.Instance.doorToGo = doorPoint;
+            SceneManager.LoadScene(levelIndex);
+        }
+    }
+}

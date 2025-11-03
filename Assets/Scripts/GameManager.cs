@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameData gameData;
 
+    public int doorToGo;
+
     private void Awake()
     {
         if (Instance == null)
