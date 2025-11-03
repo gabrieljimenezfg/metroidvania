@@ -8,10 +8,9 @@ public class NextLevelTrigger : MonoBehaviour
     [SerializeField] private int doorPoint;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {   
-            GameManager.Instance.doorToGo = doorPoint;
-            SceneManager.LoadScene(levelIndex);
-        }
+        if (!other.gameObject.CompareTag("Player")) return;
+        
+        GameManager.Instance.doorToGo = doorPoint;
+        SceneManager.LoadScene(levelIndex);
     }
 }

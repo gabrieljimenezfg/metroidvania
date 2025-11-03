@@ -12,7 +12,7 @@ public class GameData
         playerDamage,
         fireballDamage,
         heavyDamage;
-
+    [SerializeField] private int sceneIndex;
 
     public float PlayerCurrentLife
     {
@@ -60,5 +60,11 @@ public class GameData
     {
         get => playerMaxJumps;
         set => playerMaxJumps = value;
+    }
+    
+    public int SceneIndex
+    {
+        get => sceneIndex;
+        set => sceneIndex = value;
     }
 }
