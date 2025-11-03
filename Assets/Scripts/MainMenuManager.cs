@@ -33,6 +33,7 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.GameDataObject.FireballDamage = 15;
             GameManager.Instance.GameDataObject.PlayerDamage = 25;
             GameManager.Instance.GameDataObject.HeavyDamage  = 50;
+            GameManager.Instance.GameDataObject.PlayerMaxJumps  = 1;
             
             SceneManager.LoadScene(1);
         }
