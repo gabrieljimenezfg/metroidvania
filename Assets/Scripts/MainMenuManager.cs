@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
             Debug.Log("LoadGame" + slot);
             GameManager.Instance.saveSlot = slot;
             GameManager.Instance.LoadGame();
+            GameManager.Instance.isLoadingGame = true;
             SceneManager.LoadScene(GameManager.Instance.GameDataObject.SceneIndex);
         }
         else

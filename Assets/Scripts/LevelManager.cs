@@ -13,7 +13,18 @@ public class LevelManager : MonoBehaviour
         UpdateMana();
 
         var player = GameObject.FindGameObjectWithTag("Player");
-        var spawnPoint = spawnPoints[GameManager.Instance.doorToGo];
+        Transform spawnPoint;
+        if (GameManager.Instance.isLoadingGame)
+        {
+            GameManager.Instance.isLoadingGame = false;
+            var saveStoneObject = FindFirstObjectByType<SaveStone>();
+            spawnPoint = saveStoneObject.transform;
+        }
+        else
+        {
+            spawnPoint = spawnPoints[GameManager.Instance.doorToGo];
+        }
+
         player.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
     }
 

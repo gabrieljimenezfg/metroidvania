@@ -332,7 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041ed57fb06a3f5468e4f67f87823851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  arrowUp: {fileID: 2978511178128775050}
+  keySprite: {fileID: 2978511178128775050}
+  _keyCode: 0
 --- !u!58 &3749905433081578062
 CircleCollider2D:
   m_ObjectHideFlags: 0

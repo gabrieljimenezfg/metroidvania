@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private GameData gameData;
     public int saveSlot;
     public int doorToGo;
+    public bool isLoadingGame;
 
     private void Awake()
     {
@@ -21,7 +22,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Update()
+    {
+        // DEBUG
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
+
     public GameData GameDataObject
     {
         get => gameData;
