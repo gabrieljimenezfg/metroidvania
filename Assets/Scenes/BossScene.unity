@@ -17713,6 +17713,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2367916232283589296, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 2399939848468172371, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: m_LocalPosition.y
       value: 16.42
@@ -17723,7 +17727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290046255668941904, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6248639
+      value: -3.86
       objectReference: {fileID: 0}
     - target: {fileID: 4290046255668941904, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17763,7 +17767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4631034887435964965, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: bossLife
-      value: 3
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4631034887435964965, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: jumpSpeed
@@ -17783,16 +17787,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4631034887435964965, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: knockbackForce
-      value: 3
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5079260554274842923, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5079260554274842923, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6576192965631548740, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e388213f9f0ce274c86d29ff60dc3983, type: 2}
+    - target: {fileID: 6787065646526037798, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18939,6 +18951,10 @@ PrefabInstance:
     - target: {fileID: 3428640299300780738, guid: 3a89c4bced21dd04eaf00ed12ef2eebd, type: 3}
       propertyPath: m_Name
       value: Yi
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889448255910894689, guid: 3a89c4bced21dd04eaf00ed12ef2eebd, type: 3}
+      propertyPath: knockBackTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

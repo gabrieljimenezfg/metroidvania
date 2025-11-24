@@ -1,15 +1,18 @@
+using System;
 using System.Collections;
 using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
 {
     private const string JUMPING = "Jumping";
-    private const string HIT_JUMP = "HitJump";
+    private const string HIT_AIR = "HitAir";
     private const string HIT = "Hit";
     private const string ROLL = "Roll";
     private const string DEATH = "Death";
+    private const string SPIKES = "Spikes";
     
     public enum BossStates
     {
@@ -50,6 +53,13 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform[] spikesSpawnPoints;
 
     [Header("Death")] [SerializeField] private Sprite deathSprite;
+    
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -70,7 +80,7 @@ public class BossController : MonoBehaviour
 
         // Muerte
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        rb.gravityScale = 0;
         this.enabled = false;
     }
 
@@ -121,7 +131,8 @@ public class BossController : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
 
-        currentState = (BossStates)Random.Range(1, 5);
+        // currentState = (BossStates)Random.Range(1, 5);
+        currentState = BossStates.Roll;
         ChangeState();
     }
 
@@ -132,7 +143,6 @@ public class BossController : MonoBehaviour
 
         Vector2 initialPointBossA = transform.position;
         float pointPlayerBX = player.position.x;
-        float pointPlayerBY = maxJump;
         float t = 0;
 
         while (t < 1)
@@ -168,6 +178,7 @@ public class BossController : MonoBehaviour
 
     IEnumerator RollCoroutine()
     {
+        collisioned = false;
         anim.SetBool(ROLL, true);
         yield return new WaitForSeconds(timeToRoll);
 
@@ -181,6 +192,7 @@ public class BossController : MonoBehaviour
             yield return null;
         }
 
+        rb.linearVelocity = Vector2.zero;
         anim.SetBool(ROLL, false);
         bossCollider.size = new Vector2(defaultColliderX, bossCollider.size.y);
 
@@ -192,72 +204,42 @@ public class BossController : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         var contactPointNormal = collision.GetContact(collision.contacts.Length - 1).normal;
-        
-        if (contactPointNormal.x > 0.5f || contactPointNormal.x < -0.5f)
+
+        if (contactPointNormal.x is > 0.5f or < -0.5f)
         {
-            Debug.Log("Collision");
             collisioned = true;
         }
+    }
 
-        /*
-        // Para Capsule o Circle Collider, crea un margen en la colision. En mi caso no lo uso, porque utilizo un BoxCollider
-        if (collision.GetContact(contactPoints.Length - 1).normal.y > 0.5f && collision.GetContact(contactPoints.Length - 1).normal.y < 0.5f)
-        {
-            if (collision.GetContact(contactPoints.Length - 1).normal.x > 0.5f || collision.GetContact(contactPoints.Length - 1).normal.x < -0.5f)
-            {
-                Debug.Log("Chocao");
-                collisioned = true;
-            }
-        }
-        */
+    private void Update()
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
-            ContactPoint2D point = collision.GetContact(0);
-            Rigidbody2D rbPlayer = collision.gameObject.GetComponent<Rigidbody2D>();
+            var playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerController.TakeDamage(damage);
 
             if (transform.position.x < player.position.x) // Derecha
             {
-                rbPlayer.AddForce(Vector3.right * knockbackForce);
+                playerController.GetKnockedBack(new Vector3(1, 0.5f) * knockbackForce);
             }
             else // Izquierda
             {
-                rbPlayer.AddForce(Vector3.left * knockbackForce);
+                playerController.GetKnockedBack(new Vector3(-1, 0.5f) * knockbackForce);
             }
 
-            StartCoroutine(collision.gameObject.GetComponent<PlayerController>().KnockBackCorutine());
-
-            /*
-            Rigidbody2D rbPlayer = collision.gameObject.GetComponent<Rigidbody2D>();
-            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
-            if (point.normal.y < 0)
-            {
-                if (point.normal.x > 0) // Derecha
-                {
-                    rbPlayer.AddForce(Vector3.right * knockbackForce);
-                    StartCoroutine(playerController.KnockBackCorutine());
-                }
-                else // Izquierda
-                {
-                    rbPlayer.AddForce(Vector3.left * knockbackForce);
-                    StartCoroutine(playerController.KnockBackCorutine());
-                }
-            }
-            else
-            {
-                rbPlayer.AddForce(collision.GetContact(0).normal * knockbackForce);
-            }
-            */
+            rb.linearVelocity = Vector2.zero;
+            StartCoroutine(collision.gameObject.GetComponent<PlayerController>().KnockBackCoroutine());
         }
     }
 
     IEnumerator SpikesCoroutine()
     {
-        anim.SetBool("Spikes", true);
+        anim.SetBool(SPIKES, true);
 
         CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
         float defaultColliderX = collider.size.x;
@@ -269,7 +251,7 @@ public class BossController : MonoBehaviour
 
         yield return new WaitForSeconds(tiredTime);
 
-        anim.SetBool("Spikes", false);
+        anim.SetBool(SPIKES, false);
         collider.size = new Vector2(defaultColliderX, collider.size.y);
         currentState = BossStates.Waiting;
         ChangeState();
@@ -285,15 +267,15 @@ public class BossController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damageTaken)
     {
-        bossLife -= damage;
+        bossLife -= damageTaken;
         if (bossLife <= 0) // Muerte
         {
             anim.SetTrigger(DEATH);
             GetComponent<Collider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().gravityScale = 0;
-            this.enabled = false;
+            rb.gravityScale = 0;
+            enabled = false;
             GameManager.Instance.GameDataObject.Boss1Defeated = true;
             StopAllCoroutines();
         }
@@ -301,7 +283,7 @@ public class BossController : MonoBehaviour
         {
             if (anim.GetBool(JUMPING))
             {
-                anim.SetTrigger(HIT_JUMP);
+                anim.SetTrigger(HIT_AIR);
             }
             else
             {
