@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private static readonly int DamageTaken = Animator.StringToHash("DamageTaken");
     private static readonly int PlayerDied = Animator.StringToHash("PlayerDied");
+    private static readonly int IsKnocked = Animator.StringToHash("IsKnocked");
 
     [SerializeField] private float speed;
     private Rigidbody2D rb;
@@ -16,11 +18,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireballManaCost;
 
+    [SerializeField] private float knockBackTime;
+
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
     private float fireballTimer;
-    
+
     private LevelManager levelManager;
 
     private void Awake()
@@ -69,7 +73,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("FireBall"))
         {
-            if (fireballTimer >= fireballCooldown && GameManager.Instance.GameDataObject.PlayerCurrentMana >= fireballManaCost)
+            if (fireballTimer >= fireballCooldown &&
+                GameManager.Instance.GameDataObject.PlayerCurrentMana >= fireballManaCost)
             {
                 levelManager.UpdateMana();
                 GameManager.Instance.GameDataObject.PlayerCurrentMana -= fireballManaCost;
@@ -81,6 +86,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (animator.GetBool(IsKnocked)) return;
+
         fireballTimer += Time.deltaTime;
         if (comboCount == 0)
         {
@@ -167,9 +174,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             var animatorComboCount = animator.GetInteger("Combo");
-            var damageToHit = animatorComboCount > 0 ? GameManager.Instance.GameDataObject.PlayerDamage : GameManager.Instance.GameDataObject.HeavyDamage;
+            var damageToHit = animatorComboCount > 0
+                ? GameManager.Instance.GameDataObject.PlayerDamage
+                : GameManager.Instance.GameDataObject.HeavyDamage;
 
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage(damageToHit);
+            try
+            {
+                collision.gameObject.GetComponent<EnemyController>().TakeDamage(damageToHit);
+            }
+            catch
+            {
+                collision.gameObject.GetComponent<BossController>().TakeDamage(damageToHit);
+            }
         }
     }
 
@@ -185,5 +201,18 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(DamageTaken);
         }
+    }
+
+    public void GetKnockedBack(Vector3 force)
+    {
+        rb.AddForce(force);
+    }
+
+    public IEnumerator KnockBackCoroutine()
+    {
+        animator.SetBool(IsKnocked, true);
+        yield return new WaitForSeconds(knockBackTime);
+        rb.linearVelocity = Vector2.zero;
+        animator.SetBool(IsKnocked, false);
     }
 }
