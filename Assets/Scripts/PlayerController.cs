@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireballManaCost;
 
+    private bool knockBack;
+    [SerializeField]
+    private float knockBackTime;
+    
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
@@ -169,7 +174,14 @@ public class PlayerController : MonoBehaviour
             var animatorComboCount = animator.GetInteger("Combo");
             var damageToHit = animatorComboCount > 0 ? GameManager.Instance.GameDataObject.PlayerDamage : GameManager.Instance.GameDataObject.HeavyDamage;
 
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage(damageToHit);
+            try
+            {
+                collision.gameObject.GetComponent<EnemyController>().TakeDamage(damageToHit);
+            }
+            catch
+            {
+                collision.gameObject.GetComponent<BossController>().TakeDamage(damageToHit);
+            }
         }
     }
 
@@ -185,5 +197,12 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger(DamageTaken);
         }
+    }
+    
+    public IEnumerator KnockBackCorutine()
+    {
+        knockBack = true;
+        yield return new WaitForSeconds(knockBackTime);
+        knockBack = false;
     }
 }
