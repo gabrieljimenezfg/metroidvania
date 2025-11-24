@@ -13,6 +13,7 @@ public class Chest : InteractableObject
 {
     private Animator animator;
     [SerializeField] private GemType gemType;
+    [SerializeField] private ParticleSystem particleSystem;
 
     private void CheckAlreadyPickedUpUpgrades()
     {
@@ -70,5 +71,10 @@ public class Chest : InteractableObject
         transform.GetChild(0).gameObject.SetActive(false);
         gameObject.GetComponent<Collider2D>().enabled = false;
         // popup to let player know they got an upgrade
+    }
+
+    public void StartParticles()
+    {
+        particleSystem.Play();
     }
 }
