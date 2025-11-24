@@ -13,7 +13,7 @@ public class BossController : MonoBehaviour
     private const string ROLL = "Roll";
     private const string DEATH = "Death";
     private const string SPIKES = "Spikes";
-    
+
     public enum BossStates
     {
         Waiting,
@@ -45,6 +45,9 @@ public class BossController : MonoBehaviour
     [Header("Roll")] [SerializeField] private float timeToRoll = 1.35f;
     [SerializeField] private float colliderSizeX;
     [SerializeField] private float rollSpeed = 1f;
+    [SerializeField] private float outOfRollThrowForce = 300000;
+    [SerializeField] private float outOfRollThrowTime = 0.2f;
+
     private bool collisioned;
 
     [Header("Spikes")] [SerializeField] private float spikesTime;
@@ -53,7 +56,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform[] spikesSpawnPoints;
 
     [Header("Death")] [SerializeField] private Sprite deathSprite;
-    
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -109,7 +112,7 @@ public class BossController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitingCoroutine()
+    private void LookAtPlayer()
     {
         if (transform.position.x < player.position.x) // Derecha
         {
@@ -119,20 +122,16 @@ public class BossController : MonoBehaviour
         {
             transform.eulerAngles = Vector3.zero;
         }
+    }
 
+    IEnumerator WaitingCoroutine()
+    {
+        LookAtPlayer();
         yield return new WaitForSeconds(waitingTime);
-
-        if (transform.position.x < player.position.x) // Derecha
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-        }
-        else // Izquierda
-        {
-            transform.eulerAngles = Vector3.zero;
-        }
+        LookAtPlayer();
 
         // currentState = (BossStates)Random.Range(1, 5);
-        currentState = BossStates.Roll;
+        currentState = BossStates.Jumping;
         ChangeState();
     }
 
@@ -188,11 +187,22 @@ public class BossController : MonoBehaviour
 
         while (!collisioned)
         {
-            transform.Translate(Vector3.left * rollSpeed * Time.deltaTime, Space.Self);
+            transform.Translate(rollSpeed * Time.deltaTime * Vector3.left, Space.Self);
             yield return null;
         }
 
+        if (transform.position.x < player.position.x)
+        {
+            rb.AddForce(Vector3.left * outOfRollThrowForce);
+        }
+        else
+        {
+            rb.AddForce(Vector3.right * outOfRollThrowForce);
+        }
+
+        yield return new WaitForSeconds(outOfRollThrowTime);
         rb.linearVelocity = Vector2.zero;
+
         anim.SetBool(ROLL, false);
         bossCollider.size = new Vector2(defaultColliderX, bossCollider.size.y);
 
@@ -209,11 +219,6 @@ public class BossController : MonoBehaviour
         {
             collisioned = true;
         }
-    }
-
-    private void Update()
-    {
-        rb.linearVelocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -267,9 +272,10 @@ public class BossController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damage)
     {
-        bossLife -= damageTaken;
+        bossLife -= damage;
+        collisioned = true;
         if (bossLife <= 0) // Muerte
         {
             anim.SetTrigger(DEATH);
