@@ -130,8 +130,8 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         LookAtPlayer();
 
-        // currentState = (BossStates)Random.Range(1, 5);
-        currentState = BossStates.Jumping;
+        currentState = (BossStates)Random.Range(1, 5);
+        // currentState = BossStates.Spikes;
         ChangeState();
     }
 
@@ -246,10 +246,6 @@ public class BossController : MonoBehaviour
     {
         anim.SetBool(SPIKES, true);
 
-        CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
-        float defaultColliderX = collider.size.x;
-        collider.size = new Vector2(colliderSizeX, collider.size.y);
-
         yield return new WaitForSeconds(spikesTime);
 
         ShootSpikes();
@@ -257,7 +253,6 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(tiredTime);
 
         anim.SetBool(SPIKES, false);
-        collider.size = new Vector2(defaultColliderX, collider.size.y);
         currentState = BossStates.Waiting;
         ChangeState();
 
