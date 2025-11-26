@@ -17781,6 +17781,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.49
       objectReference: {fileID: 0}
+    - target: {fileID: 9056398013418983400, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
+      propertyPath: bossHitMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 04b11779c1cfac6449c819c9ef169102, type: 2}
+    - target: {fileID: 9056398013418983400, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}
+      propertyPath: hitFlashDuration
+      value: 0.07
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7413150165901304823, guid: e05a4c061e2a5ba4683a992dce5af148, type: 3}

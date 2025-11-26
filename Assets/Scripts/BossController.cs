@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
 {
+    public event EventHandler TookDamage;
+
     private const string JUMPING = "Jumping";
     private const string HIT_AIR = "HitAir";
     private const string HIT = "Hit";
@@ -288,7 +290,7 @@ public class BossController : MonoBehaviour
             }
             else
             {
-                anim.SetTrigger(HIT);
+                TookDamage?.Invoke(this, EventArgs.Empty);
             }
         }
     }
