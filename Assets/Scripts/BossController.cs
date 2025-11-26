@@ -132,8 +132,8 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         LookAtPlayer();
 
-        currentState = (BossStates)Random.Range(1, 5);
-        // currentState = BossStates.Spikes;
+        // currentState = (BossStates)Random.Range(1, 5);
+        currentState = BossStates.Roll;
         ChangeState();
     }
 
@@ -179,13 +179,9 @@ public class BossController : MonoBehaviour
 
     IEnumerator RollCoroutine()
     {
-        collisioned = false;
         anim.SetBool(ROLL, true);
         yield return new WaitForSeconds(timeToRoll);
-
-        CapsuleCollider2D bossCollider = GetComponent<CapsuleCollider2D>();
-        float defaultColliderX = bossCollider.size.x;
-        bossCollider.size = new Vector2(colliderSizeX, bossCollider.size.y);
+        collisioned = false;
 
         while (!collisioned)
         {
@@ -206,7 +202,6 @@ public class BossController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         anim.SetBool(ROLL, false);
-        bossCollider.size = new Vector2(defaultColliderX, bossCollider.size.y);
 
         yield return new WaitForSeconds(timeToRoll);
         currentState = BossStates.Waiting;
