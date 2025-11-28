@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpikeController
   speed: 500
   damage: 10
+  maximumFlyTime: 5
 --- !u!50 &-2695571556804013235
 Rigidbody2D:
   serializedVersion: 5

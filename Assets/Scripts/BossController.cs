@@ -133,7 +133,7 @@ public class BossController : MonoBehaviour
         LookAtPlayer();
 
         // currentState = (BossStates)Random.Range(1, 5);
-        currentState = BossStates.Roll;
+        currentState = BossStates.Spikes;
         ChangeState();
     }
 
