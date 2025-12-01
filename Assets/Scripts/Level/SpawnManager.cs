@@ -1,17 +1,11 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private Image lifeBar, manaBar;
     [SerializeField] private Transform[] spawnPoints;
 
-    private void Start()
+    void Start()
     {
-        UpdateLife();
-        UpdateMana();
-
         var player = GameObject.FindGameObjectWithTag("Player");
         Transform spawnPoint;
         if (GameManager.Instance.isLoadingGame)
@@ -26,17 +20,5 @@ public class LevelManager : MonoBehaviour
         }
 
         player.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
-    }
-
-    public void UpdateLife()
-    {
-        lifeBar.fillAmount = GameManager.Instance.GameDataObject.PlayerCurrentLife /
-                             GameManager.Instance.GameDataObject.PlayerMaxLife;
-    }
-
-    public void UpdateMana()
-    {
-        manaBar.fillAmount = GameManager.Instance.GameDataObject.PlayerCurrentMana /
-                             GameManager.Instance.GameDataObject.PlayerMaxMana;
     }
 }
