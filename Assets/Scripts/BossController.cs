@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
 {
+    public event EventHandler TookDamage;
+
     private const string JUMPING = "Jumping";
     private const string HIT_AIR = "HitAir";
     private const string HIT = "Hit";
@@ -131,7 +133,7 @@ public class BossController : MonoBehaviour
         LookAtPlayer();
 
         // currentState = (BossStates)Random.Range(1, 5);
-        currentState = BossStates.Jumping;
+        currentState = BossStates.Spikes;
         ChangeState();
     }
 
@@ -177,13 +179,9 @@ public class BossController : MonoBehaviour
 
     IEnumerator RollCoroutine()
     {
-        collisioned = false;
         anim.SetBool(ROLL, true);
         yield return new WaitForSeconds(timeToRoll);
-
-        CapsuleCollider2D bossCollider = GetComponent<CapsuleCollider2D>();
-        float defaultColliderX = bossCollider.size.x;
-        bossCollider.size = new Vector2(colliderSizeX, bossCollider.size.y);
+        collisioned = false;
 
         while (!collisioned)
         {
@@ -204,7 +202,6 @@ public class BossController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         anim.SetBool(ROLL, false);
-        bossCollider.size = new Vector2(defaultColliderX, bossCollider.size.y);
 
         yield return new WaitForSeconds(timeToRoll);
         currentState = BossStates.Waiting;
@@ -246,10 +243,6 @@ public class BossController : MonoBehaviour
     {
         anim.SetBool(SPIKES, true);
 
-        CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
-        float defaultColliderX = collider.size.x;
-        collider.size = new Vector2(colliderSizeX, collider.size.y);
-
         yield return new WaitForSeconds(spikesTime);
 
         ShootSpikes();
@@ -257,7 +250,6 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(tiredTime);
 
         anim.SetBool(SPIKES, false);
-        collider.size = new Vector2(defaultColliderX, collider.size.y);
         currentState = BossStates.Waiting;
         ChangeState();
 
@@ -293,7 +285,7 @@ public class BossController : MonoBehaviour
             }
             else
             {
-                anim.SetTrigger(HIT);
+                TookDamage?.Invoke(this, EventArgs.Empty);
             }
         }
     }
