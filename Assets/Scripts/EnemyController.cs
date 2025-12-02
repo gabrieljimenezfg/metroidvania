@@ -4,40 +4,45 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private static readonly int PlayerDetected = Animator.StringToHash("PlayerDetected");
-    
+
     [SerializeField] private float life;
     [SerializeField] private float damage;
     [SerializeField] private float speed;
-    
+
     private bool playerDetected;
     private Rigidbody2D rb;
-    protected Animator animator;
-    protected Transform player;
+    private Transform player;
     public float stopDistance;
     public bool isAttacking;
     private bool isDead;
 
+    public event EventHandler Alerted;
+    public event EventHandler<bool> IsAttackingChanged;
+    public event EventHandler TookDamage;
+    public event EventHandler Died;
+    public event EventHandler<bool> PlayerDetectedChanged;
+
+
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
 
     public void Update()
     {
         if (isDead) return;
-        
+
         if (playerDetected && !isAttacking)
         {
             Vector3 direction = player.position - transform.position;
             if (direction.x > 0)
             {
-                rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);        
+                rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
             else if (direction.x < 0)
             {
-                rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);        
+                rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
                 transform.eulerAngles = Vector3.zero;
             }
 
@@ -54,26 +59,23 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            animator.SetTrigger("Alert");
-            var alertLength = animator.GetCurrentAnimatorStateInfo(0).length;
             player = other.transform;
-            Invoke(nameof(StartFollowing), alertLength);
         }
     }
 
     protected void SetIsAttacking(bool isNowAttacking)
     {
         isAttacking = isNowAttacking;
-        animator.SetBool("IsAttacking", isNowAttacking);
+        IsAttackingChanged?.Invoke(this, isNowAttacking);
     }
 
     private void SetPlayerDetected(bool isDetected)
     {
         playerDetected = isDetected;
-        animator.SetBool(PlayerDetected, isDetected);
+        PlayerDetectedChanged?.Invoke(this, playerDetected);
     }
 
-    private void StartFollowing()
+    public void StartFollowing()
     {
         SetPlayerDetected(true);
     }
@@ -82,7 +84,7 @@ public class EnemyController : MonoBehaviour
     {
         var direction = player.position - transform.position;
         var distanceSquared = direction.sqrMagnitude;
-        return distanceSquared <= Mathf.Pow(stopDistance, 2);        
+        return distanceSquared <= Mathf.Pow(stopDistance, 2);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -98,14 +100,14 @@ public class EnemyController : MonoBehaviour
         life -= damageTaken;
         if (life <= 0)
         {
-            animator.SetTrigger("Died");
             rb.simulated = false;
             GetComponent<Collider2D>().enabled = false;
             isDead = true;
+            Died?.Invoke(this, EventArgs.Empty);
         }
         else
         {
-            animator.SetTrigger("Hit");
+            TookDamage?.Invoke(this, EventArgs.Empty);
         }
     }
 }

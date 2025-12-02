@@ -4,6 +4,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float damage;
+
     private void Update()
     {
         transform.Translate(Time.deltaTime * speed * Vector3.left, Space.Self);
@@ -11,10 +13,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.TryGetComponent(out PlayerController player))
         {
-            // player hit
+            player.TakeDamage(damage);
         }
+
         Destroy(gameObject);
     }
 }
