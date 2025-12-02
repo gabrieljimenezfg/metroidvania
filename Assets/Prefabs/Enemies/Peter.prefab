@@ -87,6 +87,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: fea7d53abe4a13040bb38578df14bd6b, type: 2}
+    - target: {fileID: 6952493871612092719, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3845554644849891517}
+    - target: {fileID: 7882262073455505871, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3845554644849891517}
     - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.x
       value: 6.25
@@ -103,14 +111,83 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+    - {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1850168570268095045, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3390909082722726119}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2422467752653932371}
+    - targetCorrespondingSourceObject: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3845554644849891517}
   m_SourcePrefab: {fileID: 100100000, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+--- !u!1 &346946710582900002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+  m_PrefabInstance: {fileID: 3756326564445016130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &2422467752653932371
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346946710582900002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.039925456, y: 0.083115935}
+  m_Size: {x: 1.56653, y: 1.56653}
+  m_Direction: 0
+--- !u!114 &3845554644849891517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346946710582900002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1898d699aa46cbc48a6d5594207678bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PeterController
+  life: 10
+  damage: 10
+  speed: 10
+  stopDistance: 10
+  isAttacking: 0
+  projectilePrefab: {fileID: 3810714832942232642, guid: 781bd5aff469cb24092f03326ce3f02e, type: 3}
+  spearSpawnPoint: {fileID: 3390909082722726119}
 --- !u!4 &3282061556991902215 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1850168570268095045, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}

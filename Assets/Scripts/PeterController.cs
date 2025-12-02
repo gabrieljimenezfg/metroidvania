@@ -4,9 +4,10 @@ public class PeterController : EnemyController
 {
     private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
 
-    
+
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform spearSpawnPoint;
+
     private new void Awake()
     {
         base.Awake();
@@ -14,7 +15,7 @@ public class PeterController : EnemyController
 
     private new void Update()
     {
-        base.Update();    
+        base.Update();
         if (isAttacking)
         {
             var isInStopRange = CheckIfIsInStopDistanceRange();
@@ -25,7 +26,7 @@ public class PeterController : EnemyController
         }
     }
 
-    public void ThrowProjectile()
+    public override void OnProjectileLaunch()
     {
         Instantiate(projectilePrefab, spearSpawnPoint.position, spearSpawnPoint.rotation);
     }

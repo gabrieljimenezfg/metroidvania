@@ -110,4 +110,8 @@ public class EnemyController : MonoBehaviour
             TookDamage?.Invoke(this, EventArgs.Empty);
         }
     }
+
+    public virtual void OnProjectileLaunch()
+    {
+    }
 }
