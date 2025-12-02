@@ -57,10 +57,10 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            player = other.transform;
-        }
+        if (!other.gameObject.CompareTag("Player")) return;
+
+        player = other.transform;
+        Alerted?.Invoke(this, EventArgs.Empty);
     }
 
     protected void SetIsAttacking(bool isNowAttacking)
@@ -108,6 +108,15 @@ public class EnemyController : MonoBehaviour
         else
         {
             TookDamage?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public void FinishAttack()
+    {
+        var isInStopRange = CheckIfIsInStopDistanceRange();
+        if (!isInStopRange)
+        {
+            SetIsAttacking(false);
         }
     }
 
