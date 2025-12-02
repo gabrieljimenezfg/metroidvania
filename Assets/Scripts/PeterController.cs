@@ -13,19 +13,6 @@ public class PeterController : EnemyController
         base.Awake();
     }
 
-    private new void Update()
-    {
-        base.Update();
-        if (isAttacking)
-        {
-            var isInStopRange = CheckIfIsInStopDistanceRange();
-            if (!isInStopRange)
-            {
-                SetIsAttacking(false);
-            }
-        }
-    }
-
     public override void OnProjectileLaunch()
     {
         Instantiate(projectilePrefab, spearSpawnPoint.position, spearSpawnPoint.rotation);

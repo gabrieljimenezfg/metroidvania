@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float speed;
 
-    private bool playerDetected;
+    public bool playerDetected;
     private Rigidbody2D rb;
     private Transform player;
     public float stopDistance;
@@ -28,30 +28,48 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Update()
+    private Vector2 GetVector2WithVerticalForce(float x)
     {
-        if (isDead) return;
+        return new Vector2(x, rb.linearVelocity.y);
+    }
 
-        if (playerDetected && !isAttacking)
+    protected void Update()
+    {
+        if (isDead || !playerDetected) return;
+        if (isAttacking)
         {
-            Vector3 direction = player.position - transform.position;
-            if (direction.x > 0)
-            {
-                rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
-                transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-            else if (direction.x < 0)
-            {
-                rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
-                transform.eulerAngles = Vector3.zero;
-            }
+            rb.linearVelocity = GetVector2WithVerticalForce(0);
+            return;
+        }
 
-            float distanceSquared = direction.sqrMagnitude;
-            if (distanceSquared <= Mathf.Pow(stopDistance, 2))
-            {
-                rb.linearVelocity = Vector2.zero;
-                SetIsAttacking(true);
-            }
+        Vector3 direction = player.position - transform.position;
+        Debug.Log("direction " + direction);
+        Debug.Log("linear velocity " + rb.linearVelocity);
+        HandleMovement(direction);
+        CheckIfPlayerInAttackRange(direction);
+    }
+
+    private void CheckIfPlayerInAttackRange(Vector3 direction)
+    {
+        float distanceSquared = direction.sqrMagnitude;
+        if (distanceSquared <= Mathf.Pow(stopDistance, 2))
+        {
+            rb.linearVelocity = GetVector2WithVerticalForce(0);
+            SetIsAttacking(true);
+        }
+    }
+
+    private void HandleMovement(Vector3 direction)
+    {
+        if (direction.x > 0)
+        {
+            rb.linearVelocity = GetVector2WithVerticalForce(speed);
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (direction.x < 0)
+        {
+            rb.linearVelocity = GetVector2WithVerticalForce(-speed);
+            transform.eulerAngles = Vector3.zero;
         }
     }
 
