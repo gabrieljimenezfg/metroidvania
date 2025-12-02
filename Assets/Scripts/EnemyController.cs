@@ -104,6 +104,7 @@ public class EnemyController : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             isDead = true;
             Died?.Invoke(this, EventArgs.Empty);
+            DestroyAfterDelay();
         }
         else
         {
@@ -118,6 +119,12 @@ public class EnemyController : MonoBehaviour
         {
             SetIsAttacking(false);
         }
+    }
+
+    private void DestroyAfterDelay()
+    {
+        const float delayBeforeDeath = 6f;
+        Destroy(this, delayBeforeDeath);
     }
 
     public virtual void OnProjectileLaunch()
