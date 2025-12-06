@@ -18,11 +18,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float fireballManaCost;
 
+    [SerializeField] private float normalGravityScale;
+    [SerializeField] private float fallingGravityScale;
+
     [SerializeField] private float knockBackTime;
 
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
+    private bool isGrounded;
     private float fireballTimer;
 
     public event EventHandler TookDamage;
@@ -32,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         fireballTimer = fireballCooldown;
+        rb.gravityScale = normalGravityScale;
     }
 
     void Start()
@@ -87,6 +92,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (animator.GetBool(IsKnocked)) return;
+        
+        ModifyGravityScale();
 
         fireballTimer += Time.deltaTime;
         if (comboCount == 0)
@@ -112,6 +119,18 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("StrongAttack");
                 comboCount++;
             }
+        }
+    }
+
+    private void ModifyGravityScale()
+    {
+        if (!isGrounded && rb.linearVelocity.y < 0.2f)
+        {
+            rb.gravityScale = fallingGravityScale;
+        }
+        else
+        {
+            rb.gravityScale = normalGravityScale;
         }
     }
 
@@ -143,7 +162,7 @@ public class PlayerController : MonoBehaviour
     void CheckJump()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, groundDistance);
-        bool isGrounded = false;
+        isGrounded = false;
 
         for (int i = 0; i < colliders.Length; i++)
         {
