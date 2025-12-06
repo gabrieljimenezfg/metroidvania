@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class AnimationProjectileLaunch : MonoBehaviour
 {
-    [SerializeField] private EnemyController enemyController;
+    private EnemyController enemyController;
+
+    private void Awake()
+    {
+        enemyController = GetComponentInParent<EnemyController>();
+    }
+
 
     public void ProjectileLaunch()
     {

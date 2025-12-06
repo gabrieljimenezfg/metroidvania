@@ -9,11 +9,12 @@ public class EnemyAnimator : MonoBehaviour
     private static readonly int Died = Animator.StringToHash("Died");
     private static readonly int Alert = Animator.StringToHash("Alert");
     private Animator animator;
-    [SerializeField] private EnemyController enemyController;
+    private EnemyController enemyController;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        enemyController = GetComponentInParent<EnemyController>();
     }
 
     private void Start()

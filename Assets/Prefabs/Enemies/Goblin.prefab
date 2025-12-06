@@ -79,9 +79,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2670862366605538518, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3845554644849891517}
     - target: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Name
-      value: Peter
+      value: Goblin
       objectReference: {fileID: 0}
     - target: {fileID: 6051582420320061926, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Controller
@@ -184,6 +188,7 @@ MonoBehaviour:
   life: 10
   damage: 10
   speed: 10
+  playerDetected: 0
   stopDistance: 10
   isAttacking: 0
   projectilePrefab: {fileID: 3810714832942232642, guid: 781bd5aff469cb24092f03326ce3f02e, type: 3}

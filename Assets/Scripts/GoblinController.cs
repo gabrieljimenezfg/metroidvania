@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PeterController : EnemyController
+public class GoblinController : EnemyController
 {
     private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
 
