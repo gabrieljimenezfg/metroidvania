@@ -61,6 +61,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: eaab1b2bfd4655a4da4ccb897194aed5, type: 2}
     - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: life
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: isAttacking
       value: 0
       objectReference: {fileID: 0}
@@ -68,21 +76,29 @@ PrefabInstance:
       propertyPath: stopDistance
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: playerDetected
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325246940008258882, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.x
-      value: 0.7608261
+      value: 0.6276765
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.y
-      value: 0.14317942
+      value: 1.8519399
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Offset.x
-      value: 0.121926785
+      value: 0.14411855
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Offset.y
-      value: -0.92491007
+      value: -0.07052982
       objectReference: {fileID: 0}
     - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.x

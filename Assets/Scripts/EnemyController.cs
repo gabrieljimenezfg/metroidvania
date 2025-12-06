@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private float damage;
     [SerializeField] private float speed;
-    [SerializeField] private bool canWalk;
+    [SerializeField] private bool canWalk = true;
 
     public bool playerDetected;
     private Rigidbody2D rb;

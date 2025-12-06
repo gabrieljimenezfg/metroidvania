@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: stopDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6678654787212169983, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6952493871612092719, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: enemyController
       value: 
@@ -151,6 +155,6 @@ MonoBehaviour:
   life: 10
   damage: 10
   speed: 3
+  canWalk: 1
   playerDetected: 0
   stopDistance: 2
-  isAttacking: 0
