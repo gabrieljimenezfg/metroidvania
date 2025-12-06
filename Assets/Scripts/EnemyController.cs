@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private static readonly int PlayerDetected = Animator.StringToHash("PlayerDetected");
-
     [SerializeField] private float life;
     [SerializeField] private float damage;
     [SerializeField] private float speed;
     [SerializeField] private bool canWalk = true;
+
+    private float currentAttackingCooldownTimer;
+    [SerializeField] private float attackingCooldown;
 
     public bool playerDetected;
     private Rigidbody2D rb;
@@ -37,13 +38,15 @@ public class EnemyController : MonoBehaviour
     protected void Update()
     {
         if (isDead || !playerDetected) return;
+        Vector3 direction = player.position - transform.position;
+        HandleRotation(direction);
+        
         if (isAttacking)
         {
             rb.linearVelocity = GetVector2WithVerticalForce(0);
             return;
         }
 
-        Vector3 direction = player.position - transform.position;
         HandleMovement(direction);
         CheckIfPlayerInAttackRange(direction);
     }
@@ -58,6 +61,18 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void HandleRotation(Vector3 direction)
+    {
+        if (direction.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (direction.x < 0)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+    }
+
     private void HandleMovement(Vector3 direction)
     {
         if (!canWalk) return;
@@ -65,12 +80,10 @@ public class EnemyController : MonoBehaviour
         if (direction.x > 0)
         {
             rb.linearVelocity = GetVector2WithVerticalForce(speed);
-            transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (direction.x < 0)
         {
             rb.linearVelocity = GetVector2WithVerticalForce(-speed);
-            transform.eulerAngles = Vector3.zero;
         }
     }
 
