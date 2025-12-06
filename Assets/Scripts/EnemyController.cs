@@ -8,12 +8,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private float damage;
     [SerializeField] private float speed;
+    [SerializeField] private bool canWalk;
 
     public bool playerDetected;
     private Rigidbody2D rb;
     private Transform player;
     public float stopDistance;
-    public bool isAttacking;
+    private bool isAttacking;
     private bool isDead;
 
     public event EventHandler Alerted;
@@ -43,8 +44,6 @@ public class EnemyController : MonoBehaviour
         }
 
         Vector3 direction = player.position - transform.position;
-        Debug.Log("direction " + direction);
-        Debug.Log("linear velocity " + rb.linearVelocity);
         HandleMovement(direction);
         CheckIfPlayerInAttackRange(direction);
     }
@@ -61,6 +60,8 @@ public class EnemyController : MonoBehaviour
 
     private void HandleMovement(Vector3 direction)
     {
+        if (!canWalk) return;
+        
         if (direction.x > 0)
         {
             rb.linearVelocity = GetVector2WithVerticalForce(speed);
@@ -76,12 +77,13 @@ public class EnemyController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
+        if (playerDetected) return;
 
         player = other.transform;
         Alerted?.Invoke(this, EventArgs.Empty);
     }
 
-    protected void SetIsAttacking(bool isNowAttacking)
+    private void SetIsAttacking(bool isNowAttacking)
     {
         isAttacking = isNowAttacking;
         IsAttackingChanged?.Invoke(this, isNowAttacking);
@@ -93,12 +95,12 @@ public class EnemyController : MonoBehaviour
         PlayerDetectedChanged?.Invoke(this, playerDetected);
     }
 
-    public void StartFollowing()
+    public virtual void StartFollowing()
     {
         SetPlayerDetected(true);
     }
 
-    protected bool CheckIfIsInStopDistanceRange()
+    private bool CheckIfIsInStopDistanceRange()
     {
         var direction = player.position - transform.position;
         var distanceSquared = direction.sqrMagnitude;

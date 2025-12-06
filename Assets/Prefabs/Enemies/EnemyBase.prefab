@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 9039625856263746764}
   - component: {fileID: 6051582420320061926}
   - component: {fileID: 6952493871612092719}
-  - component: {fileID: 7882262073455505871}
-  - component: {fileID: 2670862366605538518}
+  - component: {fileID: 1446199326625400586}
   m_Layer: 7
   m_Name: EnemyVisual
   m_TagString: Untagged
@@ -128,8 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb836db9ea1bc540b9de24992c2f62d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  enemyController: {fileID: 6186300411676773821}
---- !u!114 &7882262073455505871
+--- !u!114 &1446199326625400586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,23 +136,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 679346878385565422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ead4ee66d82af4c90ae93f6635294f, type: 3}
+  m_Script: {fileID: 11500000, guid: a468fec21c8b5d94e84203684d1d9734, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationProjectileLaunch
-  enemyController: {fileID: 6186300411676773821}
---- !u!114 &2670862366605538518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679346878385565422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53e4a09a02b3b7f41ae75d09060e6371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationAttackFinish
-  enemyController: {fileID: 6186300411676773821}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationEventRelays
 --- !u!1 &3526807972205520224
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +263,7 @@ MonoBehaviour:
   life: 0
   damage: 0
   speed: 0
+  playerDetected: 0
   stopDistance: 0
   isAttacking: 0
 --- !u!1 &7540228721979027678

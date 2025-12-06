@@ -11,6 +11,8 @@ public class EnemyAnimator : MonoBehaviour
     private Animator animator;
     private EnemyController enemyController;
 
+    public event EventHandler AlertFinished;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -35,6 +37,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void FinishAlert()
     {
+        AlertFinished?.Invoke(this, EventArgs.Empty);
         enemyController.StartFollowing();
     }
 
