@@ -142,7 +142,7 @@ public class EnemyController : MonoBehaviour
     private void DestroyAfterDelay()
     {
         const float delayBeforeDeath = 6f;
-        Destroy(this, delayBeforeDeath);
+        Destroy(gameObject, delayBeforeDeath);
     }
 
     public virtual void OnProjectileLaunch()
