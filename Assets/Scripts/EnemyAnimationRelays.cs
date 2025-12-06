@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class AnimationAttackFinish : MonoBehaviour
+public class EnemyAnimationEventRelays : MonoBehaviour
 {
     private EnemyController enemyController;
 
@@ -13,5 +12,10 @@ public class AnimationAttackFinish : MonoBehaviour
     public void FinishAttack()
     {
         enemyController.FinishAttack();
+    }
+
+    public void ProjectileLaunch()
+    {
+        enemyController.OnProjectileLaunch();
     }
 }

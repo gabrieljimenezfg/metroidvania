@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2911090059707050028}
     - target: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Name
-      value: Escapatrajo
+      value: Beetle
       objectReference: {fileID: 0}
     - target: {fileID: 6051582420320061926, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Controller
@@ -102,13 +102,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+    - {fileID: 7882262073455505871, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+    - {fileID: 2670862366605538518, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2911090059707050028}
+    - targetCorrespondingSourceObject: {fileID: 679346878385565422, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 254870336544709652}
   m_SourcePrefab: {fileID: 100100000, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+--- !u!1 &5838615771259948653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 679346878385565422, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+  m_PrefabInstance: {fileID: 6371300992054485123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &254870336544709652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838615771259948653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a468fec21c8b5d94e84203684d1d9734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationEventRelays
 --- !u!1 &7537571486648960483 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
@@ -129,5 +151,6 @@ MonoBehaviour:
   life: 10
   damage: 10
   speed: 3
+  playerDetected: 0
   stopDistance: 2
   isAttacking: 0
