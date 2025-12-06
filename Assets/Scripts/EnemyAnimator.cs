@@ -8,8 +8,10 @@ public class EnemyAnimator : MonoBehaviour
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Died = Animator.StringToHash("Died");
     private static readonly int Alert = Animator.StringToHash("Alert");
+    private string ALERT_ANIMATION = "Alert";
     private Animator animator;
     private EnemyController enemyController;
+    private float alertClipLength;
 
     public event EventHandler AlertFinished;
 
@@ -17,6 +19,8 @@ public class EnemyAnimator : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         enemyController = GetComponentInParent<EnemyController>();
+        var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+        if (overrideController != null) alertClipLength = overrideController[ALERT_ANIMATION].length;
     }
 
     private void Start()
@@ -28,11 +32,11 @@ public class EnemyAnimator : MonoBehaviour
         enemyController.Alerted += EnemyControllerOnAlerted;
     }
 
+
     private void EnemyControllerOnAlerted(object sender, EventArgs e)
     {
         animator.SetTrigger(Alert);
-        var alertLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        Invoke(nameof(FinishAlert), alertLength);
+        Invoke(nameof(FinishAlert), alertClipLength);
     }
 
     public void FinishAlert()

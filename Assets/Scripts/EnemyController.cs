@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
     private void HandleMovement(Vector3 direction)
     {
         if (!canWalk) return;
-        
+
         if (direction.x > 0)
         {
             rb.linearVelocity = GetVector2WithVerticalForce(speed);
@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour
         PlayerDetectedChanged?.Invoke(this, playerDetected);
     }
 
-    public virtual void StartFollowing()
+    public void StartFollowing()
     {
         SetPlayerDetected(true);
     }

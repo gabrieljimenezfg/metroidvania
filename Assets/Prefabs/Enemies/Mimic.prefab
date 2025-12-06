@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7225346007509435628
+--- !u!1001 &2172728488876170341
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 269338022679852584, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Radius
-      value: 2.34
+      value: 2.19
       objectReference: {fileID: 0}
     - target: {fileID: 1850168570268095045, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,51 +54,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3526807972205520224, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Name
-      value: Worm
+      value: Mimic
       objectReference: {fileID: 0}
     - target: {fileID: 6051582420320061926, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: eaab1b2bfd4655a4da4ccb897194aed5, type: 2}
+      objectReference: {fileID: 22100000, guid: 7a66dcc03f6d4b64eb2d7359ac6769eb, type: 2}
     - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: life
-      value: 30
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: damage
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
-      propertyPath: isAttacking
-      value: 0
+      propertyPath: canWalk
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: stopDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
-      propertyPath: playerDetected
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325246940008258882, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.x
-      value: 0.6276765
+      value: 1.8555388
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.y
-      value: 1.8519399
+      value: 1.9354393
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Offset.x
-      value: 0.14411855
+      value: -0.028264046
       objectReference: {fileID: 0}
     - target: {fileID: 7365643141320215016, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Offset.y
-      value: -0.07052982
+      value: -0.023322105
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.x
@@ -111,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 258881067832302799, guid: eb29c34a9b3c34d45ac723c4357815cd, type: 3}
+      objectReference: {fileID: 3919569797216171508, guid: f65d52896b250cc4f84ac0f5020a9e10, type: 3}
     - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -122,23 +122,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 679346878385565422, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3431460582055357124}
+      addedObject: {fileID: 2338354140502846153}
   m_SourcePrefab: {fileID: 100100000, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
---- !u!1 &7865558238963575298 stripped
+--- !u!1 &1678315913845469835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 679346878385565422, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
-  m_PrefabInstance: {fileID: 7225346007509435628}
+  m_PrefabInstance: {fileID: 2172728488876170341}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3431460582055357124
+--- !u!114 &2338354140502846153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7865558238963575298}
+  m_GameObject: {fileID: 1678315913845469835}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecbc3e78c25842f4fa3c9a1305252d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationOverrideOnAlert
-  idleOverrideClip: {fileID: 7400000, guid: 11741b03f1bd34147b271dda4c1d471a, type: 2}
+  idleOverrideClip: {fileID: 7400000, guid: 7573051bc29163a408671c7079b18320, type: 2}

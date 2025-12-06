@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class WormAnimator : MonoBehaviour
+public class EnemyIdleClipOverrideOnAlert : MonoBehaviour
 {
     private const string IDLE_ANIMATION = "Idle";
 
-    [SerializeField] private AnimationClip idleOverClip;
+    [SerializeField] private AnimationClip idleOverrideClip;
 
     private Animator animator;
     private AnimatorOverrideController runtimeOverride;
@@ -29,7 +29,7 @@ public class WormAnimator : MonoBehaviour
 
     private void EnemyAnimatorAlertFinished(object sender, EventArgs e)
     {
-        runtimeOverride[IDLE_ANIMATION] = idleOverClip;
+        runtimeOverride[IDLE_ANIMATION] = idleOverrideClip;
         enemyAnimator.AlertFinished -= EnemyAnimatorAlertFinished;
     }
 }
