@@ -19,8 +19,7 @@ public class EnemyAnimator : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         enemyController = GetComponentInParent<EnemyController>();
-        var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
-        if (overrideController != null) alertClipLength = overrideController[ALERT_ANIMATION].length;
+        SetAlertClipLength();
     }
 
     private void Start()
@@ -30,8 +29,19 @@ public class EnemyAnimator : MonoBehaviour
         enemyController.TookDamage += EnemyControllerOnTookDamage;
         enemyController.Died += EnemyControllerOnDied;
         enemyController.Alerted += EnemyControllerOnAlerted;
+        enemyController.RestingChanged += EnemyControllerOnRestingChanged;
     }
 
+    private void SetAlertClipLength()
+    {
+        var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+        if (overrideController != null) alertClipLength = overrideController[ALERT_ANIMATION].length;
+    }
+
+    private void EnemyControllerOnRestingChanged(object sender, bool e)
+    {
+        animator.SetBool(PlayerDetected, !e);
+    }
 
     private void EnemyControllerOnAlerted(object sender, EventArgs e)
     {

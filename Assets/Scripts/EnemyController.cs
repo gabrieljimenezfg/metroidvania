@@ -23,42 +23,56 @@ public class EnemyController : MonoBehaviour
     public event EventHandler TookDamage;
     public event EventHandler Died;
     public event EventHandler<bool> PlayerDetectedChanged;
+    public event EventHandler<bool> RestingChanged;
 
 
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentAttackingCooldownTimer = attackingCooldown;
     }
 
     private Vector2 GetVector2WithVerticalForce(float x)
     {
         return new Vector2(x, rb.linearVelocity.y);
     }
+    
 
     protected void Update()
     {
         if (isDead || !playerDetected) return;
         Vector3 direction = player.position - transform.position;
         HandleRotation(direction);
-        
-        if (isAttacking)
+
+        currentAttackingCooldownTimer += Time.deltaTime;
+
+        if (isAttacking || currentAttackingCooldownTimer < attackingCooldown)
         {
             rb.linearVelocity = GetVector2WithVerticalForce(0);
             return;
         }
 
         HandleMovement(direction);
-        CheckIfPlayerInAttackRange(direction);
+        HandleAttack(direction);
     }
 
-    private void CheckIfPlayerInAttackRange(Vector3 direction)
+    private void HandleAttack(Vector3 direction)
+    {
+        if (currentAttackingCooldownTimer < attackingCooldown) return;
+        RestingChanged?.Invoke(this, false);
+
+        var isInRange = CheckIfPlayerInAttackRange(direction);
+
+        if (!isInRange) return;
+        
+        rb.linearVelocity = GetVector2WithVerticalForce(0);
+        SetIsAttacking(true);
+    }
+
+    private bool CheckIfPlayerInAttackRange(Vector3 direction)
     {
         float distanceSquared = direction.sqrMagnitude;
-        if (distanceSquared <= Mathf.Pow(stopDistance, 2))
-        {
-            rb.linearVelocity = GetVector2WithVerticalForce(0);
-            SetIsAttacking(true);
-        }
+        return distanceSquared <= Mathf.Pow(stopDistance, 2);
     }
 
     private void HandleRotation(Vector3 direction)
@@ -113,13 +127,6 @@ public class EnemyController : MonoBehaviour
         SetPlayerDetected(true);
     }
 
-    private bool CheckIfIsInStopDistanceRange()
-    {
-        var direction = player.position - transform.position;
-        var distanceSquared = direction.sqrMagnitude;
-        return distanceSquared <= Mathf.Pow(stopDistance, 2);
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -145,13 +152,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void ResetAttackingCooldown()
+    {
+        currentAttackingCooldownTimer = 0f;
+        RestingChanged?.Invoke(this, true);
+    }
+
     public void FinishAttack()
     {
-        var isInStopRange = CheckIfIsInStopDistanceRange();
-        if (!isInStopRange)
-        {
-            SetIsAttacking(false);
-        }
+        ResetAttackingCooldown();
+        SetIsAttacking(false);
     }
 
     private void DestroyAfterDelay()
