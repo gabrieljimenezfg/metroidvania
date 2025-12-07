@@ -23,15 +23,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        // DEBUG
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            PlayerPrefs.DeleteAll();
-        }
-    }
-
     public GameData GameDataObject
     {
         get => gameData;
