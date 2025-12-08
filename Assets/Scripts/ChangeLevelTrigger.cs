@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NextLevelTrigger : MonoBehaviour
+public class ChangeLevelTrigger : MonoBehaviour
 {
     [SerializeField] private int levelIndex;
     [SerializeField] private int doorPoint;

@@ -274,8 +274,10 @@ MonoBehaviour:
   fireballPrefab: {fileID: 200950618845704701, guid: 2b3347909d166494aa2e53a3b03cddf7, type: 3}
   spawnPoint: {fileID: 6517824241893641456}
   fireballManaCost: 15
+  normalGravityScale: 3
+  fallingGravityScale: 4
   knockBackTime: 0
-  jumpForce: 7.5
+  jumpForce: 15
   groundDistance: 0.1
   fireballCooldown: 1.5
 --- !u!1 &6877526898913824461

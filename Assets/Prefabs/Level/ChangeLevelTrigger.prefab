@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 437229790695382697}
   - component: {fileID: 1123325213041116997}
   m_Layer: 0
-  m_Name: NextLevelTrigger
+  m_Name: ChangeLevelTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 6.4850655, y: -0.37113285}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -91,3 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dccf317da6da8e498bfcf3bb951a1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevelTrigger
+  levelIndex: 0
+  doorPoint: 0
