@@ -26,8 +26,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
+    
+    [SerializeField] private float dashStrength;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashCooldown = 1f;
+    private float dashCooldownTimer;
+    private bool airDashed;
+
     private bool isGrounded;
     private float fireballTimer;
+    private bool isDashing;
 
     public event EventHandler TookDamage;
     public event EventHandler UsedMana;
@@ -36,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         fireballTimer = fireballCooldown;
+        dashCooldownTimer = dashCooldown;
         rb.gravityScale = normalGravityScale;
     }
 
@@ -89,20 +98,53 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleDashing()
+    {
+        // if (!GameManager.Instance.GameDataObject.HasDash) return;
+        if (!Input.GetButtonDown("Dash") || isDashing) return;
+        if (dashCooldownTimer < dashCooldown) return;
+        if (!isGrounded && airDashed) return;
+
+        isDashing = true;
+        dashCooldownTimer = 0f;
+
+        var direction = transform.eulerAngles == Vector3.zero ? 1 : -1;
+
+        rb.gravityScale = 0f;
+        rb.linearVelocity = new Vector2(dashStrength * direction, 0);
+
+        if (!isGrounded)
+        {
+            airDashed = true;
+        }
+
+        StartCoroutine(EndDashCoroutine());
+    }
+
+    private IEnumerator EndDashCoroutine()
+    {
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+        rb.gravityScale = normalGravityScale;
+    }
+
     void Update()
     {
         if (animator.GetBool(IsKnocked)) return;
-        
+
+        HandleDashing();
         ModifyGravityScale();
 
         fireballTimer += Time.deltaTime;
-        if (comboCount == 0)
+        dashCooldownTimer += Time.deltaTime;
+        
+        if (comboCount == 0 && !isDashing)
         {
             CheckMovement();
             CheckJump();
             CheckFireball();
         }
-        else
+        else if (comboCount != 0)
         {
             rb.linearVelocity = Vector2.zero;
         }
@@ -124,6 +166,8 @@ public class PlayerController : MonoBehaviour
 
     private void ModifyGravityScale()
     {
+        if (isDashing) return;
+        
         if (!isGrounded && rb.linearVelocity.y < 0.2f)
         {
             rb.gravityScale = fallingGravityScale;
@@ -177,6 +221,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpCount = 0;
             animator.SetBool("IsJumping", false);
+            airDashed = false;
         }
         else
         {

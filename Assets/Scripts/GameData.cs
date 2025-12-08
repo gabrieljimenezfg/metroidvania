@@ -12,8 +12,9 @@ public class GameData
         playerDamage,
         fireballDamage,
         heavyDamage;
+
     [SerializeField] private int sceneIndex;
-    [SerializeField] private bool boss1Defeated;
+    [SerializeField] private bool boss1Defeated, hasDash;
 
     public float PlayerCurrentLife
     {
@@ -62,7 +63,7 @@ public class GameData
         get => playerMaxJumps;
         set => playerMaxJumps = value;
     }
-    
+
     public int SceneIndex
     {
         get => sceneIndex;
@@ -73,5 +74,11 @@ public class GameData
     {
         get => boss1Defeated;
         set => boss1Defeated = value;
+    }
+
+    public bool HasDash
+    {
+        get => hasDash;
+        set => hasDash = value;
     }
 }

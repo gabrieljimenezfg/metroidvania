@@ -29,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.saveSlot = slot;
             GameManager.Instance.GameDataObject.PlayerCurrentLife = 100;
             GameManager.Instance.GameDataObject.PlayerMaxLife = 100;
+            GameManager.Instance.GameDataObject.HasDash = false;
             GameManager.Instance.GameDataObject.PlayerCurrentMana = 50;
             GameManager.Instance.GameDataObject.PlayerMaxMana = 50;
             GameManager.Instance.GameDataObject.FireballDamage = 15;
