@@ -6,4 +6,6 @@ using UnityEngine;
 public class AudioClipRefsSO : ScriptableObject {
     public AudioClip[] attack;
     public AudioClip[] swordHit;
+    public AudioClip[] runeSound;
+    public AudioClip[] playerHit;
 }

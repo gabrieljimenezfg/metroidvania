@@ -20,3 +20,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c146da185fbea644b23e9f22310b064, type: 3}
   swordHit:
   - {fileID: 8300000, guid: 20b1843cbf04d2443be5a3991a328772, type: 3}
+  runeSound:
+  - {fileID: 8300000, guid: 3a7101f200ce22a43a4d630b643a4a00, type: 3}
+  playerHit:
+  - {fileID: 8300000, guid: d3c8e71eb1302464486b31805b234bd5, type: 3}
+  - {fileID: 8300000, guid: 1ab3f63ec083b2442b0977c5eef621db, type: 3}

@@ -56,6 +56,22 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 4bb4986f6598f034a9ae280d22bf812d, type: 2}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: life
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186300411676773821, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
+      propertyPath: attackingCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9039625856263746764, guid: a5f724e07f8b67c4ca5eea7e84c64315, type: 3}
       propertyPath: m_Size.x
       value: 10

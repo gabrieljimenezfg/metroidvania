@@ -280,6 +280,9 @@ MonoBehaviour:
   jumpForce: 15
   groundDistance: 0.1
   fireballCooldown: 1.5
+  dashStrength: 20
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!1 &6877526898913824461
 GameObject:
   m_ObjectHideFlags: 0

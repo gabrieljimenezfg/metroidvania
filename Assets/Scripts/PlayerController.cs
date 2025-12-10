@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
         if (!Input.GetButtonDown("Dash") || isDashing) return;
         if (dashCooldownTimer < dashCooldown) return;
         if (!isGrounded && airDashed) return;
+        Debug.Log("Dashing");
 
         isDashing = true;
         dashCooldownTimer = 0f;
@@ -149,7 +150,10 @@ public class PlayerController : MonoBehaviour
         ModifyGravityScale();
 
         fireballTimer += Time.deltaTime;
-        dashCooldownTimer += Time.deltaTime;
+        if (GameManager.Instance.GameDataObject.HasDash)
+        {
+            dashCooldownTimer += Time.deltaTime;
+        }
 
         if (comboCount == 0 && !isDashing)
         {

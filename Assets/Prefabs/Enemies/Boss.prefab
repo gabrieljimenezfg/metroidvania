@@ -238,7 +238,7 @@ MonoBehaviour:
   maxJump: 3.5
   jumpSpeed: 1
   timeToSpawnBugs: 1
-  bugMonster: {fileID: 3788564819671859133, guid: 1b5b0465e1ea9824da3a5917c4d55653, type: 3}
+  bugMonster: {fileID: 7537571486648960483, guid: cfc5431038a24e248a8b31c3e2748cac, type: 3}
   bugSpawnPoint: {fileID: 2399939848468172371}
   timeToRoll: 1.35
   colliderSizeX: 3
@@ -331,6 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9370665337e664b438e96a05890af638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  bossHitMaterial: {fileID: 0}
+  hitFlashDuration: 0
 --- !u!1 &6731446745504767826
 GameObject:
   m_ObjectHideFlags: 0

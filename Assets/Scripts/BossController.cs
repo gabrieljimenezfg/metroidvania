@@ -9,7 +9,6 @@ public class BossController : MonoBehaviour
 {
     public event EventHandler TookDamage;
 
-    private const string JUMPING = "Jumping";
     private const string HIT_AIR = "HitAir";
     private const string HIT = "Hit";
     private const string ROLL = "Roll";
@@ -19,12 +18,13 @@ public class BossController : MonoBehaviour
     public enum BossStates
     {
         Waiting,
-        Jumping,
         Roar,
         Roll,
         Spikes,
         Death
     }
+
+    private bool sleeping = true;
 
     [Header("Stats")] [SerializeField] private float bossLife;
     [SerializeField] private float damage;
@@ -35,10 +35,6 @@ public class BossController : MonoBehaviour
     private Animator anim;
 
     [Header("Cooldown")] [SerializeField] private float waitingTime = 1f;
-
-    [Header("Jump")] [SerializeField] private float timeToJump = 0.6f;
-    [SerializeField] private float maxJump;
-    [SerializeField] private float jumpSpeed;
 
     [Header("Roar")] [SerializeField] private float timeToSpawnBugs = 1f;
     [SerializeField] private GameObject bugMonster;
@@ -58,6 +54,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform[] spikesSpawnPoints;
 
     [Header("Death")] [SerializeField] private Sprite deathSprite;
+
+    [SerializeField] private BossLevelManager bossLevelManager;
 
     private Rigidbody2D rb;
 
@@ -96,9 +94,6 @@ public class BossController : MonoBehaviour
             case BossStates.Waiting:
                 StartCoroutine(WaitingCoroutine());
                 break;
-            case BossStates.Jumping:
-                StartCoroutine(JumpCoroutine());
-                break;
             case BossStates.Roar:
                 StartCoroutine(RoarCoroutine());
                 break;
@@ -126,39 +121,18 @@ public class BossController : MonoBehaviour
         }
     }
 
+    public void WakeUp()
+    {
+        sleeping = false;
+    }
+
     IEnumerator WaitingCoroutine()
     {
         LookAtPlayer();
         yield return new WaitForSeconds(waitingTime);
         LookAtPlayer();
-
-        currentState = (BossStates)Random.Range(1, 5);
-        ChangeState();
-    }
-
-    IEnumerator JumpCoroutine()
-    {
-        anim.SetBool(JUMPING, true);
-        yield return new WaitForSeconds(timeToJump);
-
-        Vector2 initialPointBossA = transform.position;
-        float pointPlayerBX = player.position.x;
-        float t = 0;
-
-        while (t < 1)
-        {
-            t += Time.deltaTime * jumpSpeed;
-
-            float posX = Mathf.Lerp(initialPointBossA.x, pointPlayerBX, t);
-            float posY = initialPointBossA.y + (4 * maxJump * t * (1 - t));
-
-            transform.position = new Vector2(posX, posY);
-
-            yield return null;
-        }
-
-        anim.SetBool(JUMPING, false);
-        currentState = BossStates.Waiting;
+        if (sleeping) currentState = BossStates.Waiting;
+        else currentState = (BossStates)Random.Range(1, 4);
         ChangeState();
     }
 
@@ -275,17 +249,11 @@ public class BossController : MonoBehaviour
             enabled = false;
             GameManager.Instance.GameDataObject.Boss1Defeated = true;
             StopAllCoroutines();
+            bossLevelManager.ShowCongrats();
         }
         else
         {
-            if (anim.GetBool(JUMPING))
-            {
-                anim.SetTrigger(HIT_AIR);
-            }
-            else
-            {
-                TookDamage?.Invoke(this, EventArgs.Empty);
-            }
+            TookDamage?.Invoke(this, EventArgs.Empty);
         }
     }
 }

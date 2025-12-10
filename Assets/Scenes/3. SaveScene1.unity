@@ -31906,6 +31906,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &287040839
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7589707275881735258, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.97123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.25917
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686059728951385939, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b67bfb0ef22c77b4aae833f454570e96, type: 3}
 --- !u!1 &418183865
 GameObject:
   m_ObjectHideFlags: 0
@@ -34457,6 +34514,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8626119232660473649, guid: 8c896fb764da966498cab472ad218600, type: 3}
+      propertyPath: m_text
+      value: You unlocked Double Jump!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34475,3 +34536,4 @@ SceneRoots:
   - {fileID: 477023053}
   - {fileID: 2003944294}
   - {fileID: 48312128}
+  - {fileID: 287040839}

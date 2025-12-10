@@ -44,3 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb54e8187350084384968dd15c17ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  gameData:
+    playerMaxLife: 100
+    playerMaxJumps: 2
+    playerCurrentLife: 100
+    playerMaxMana: 100
+    playerCurrentMana: 100
+    playerDamage: 25
+    fireballDamage: 10
+    heavyDamage: 50
+    sceneIndex: 0
+    boss1Defeated: 0
+    hasDash: 0
+  saveSlot: 0
+  doorToGo: 0
+  isLoadingGame: 0
+  isGamePaused: 0

@@ -191,7 +191,7 @@ MonoBehaviour:
   damage: 10
   speed: 3
   canWalk: 1
-  attackingCooldown: 0
+  attackingCooldown: 1
   playerDetected: 0
   stopDistance: 10
   projectilePrefab: {fileID: 3810714832942232642, guid: 781bd5aff469cb24092f03326ce3f02e, type: 3}

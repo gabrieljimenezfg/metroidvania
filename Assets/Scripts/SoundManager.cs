@@ -25,6 +25,17 @@ public class SoundManager : MonoBehaviour
     {
         PlayerController.Instance.AttackedSword += PlayerOnAttackedSword;
         PlayerController.Instance.SwordHit += PlayerOnSwordHit;
+        PlayerController.Instance.TookDamage += PlayerOnTookDamage;
+    }
+
+    private void PlayerOnTookDamage(object sender, EventArgs e)
+    {
+        PlaySound(soundRefsSO.playerHit, PlayerController.Instance.transform.position);
+    }
+
+    public void PlayRuneSound()
+    {
+        PlaySound(soundRefsSO.runeSound, PlayerController.Instance.transform.position);
     }
 
     private void PlayerOnSwordHit(object sender, EventArgs e)

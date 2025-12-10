@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ClosingDoor : MonoBehaviour
 {
+    [SerializeField] BossLevelManager bossLevelManager;
     private string CLOSED = "Closed";
     private Animator animator;
 
@@ -14,5 +15,10 @@ public class ClosingDoor : MonoBehaviour
     public void Close()
     {
         animator.SetBool(CLOSED, true);
+    }
+
+    public void StartFighting()
+    {
+        bossLevelManager.StartFight();
     }
 }

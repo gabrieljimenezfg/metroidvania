@@ -152,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7f8c61ee88a6849b9e95b51ed38712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EscapatrajoController
-  life: 10
-  damage: 10
+  life: 100
+  damage: 30
   speed: 3
   canWalk: 1
+  attackingCooldown: 0
   playerDetected: 0
   stopDistance: 2

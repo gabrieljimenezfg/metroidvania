@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GemType
 {
@@ -12,6 +13,7 @@ public enum GemType
 public class Chest : InteractableObject
 {
     private Animator animator;
+    [SerializeField] private GameObject explanationCanvas;
     [SerializeField] private GemType gemType;
     [SerializeField] private ParticleSystem particleSystem;
 
@@ -24,12 +26,14 @@ public class Chest : InteractableObject
                 {
                     GetComponent<Collider2D>().enabled = false;
                 }
+
                 break;
             case GemType.Dash:
                 if (GameManager.Instance.GameDataObject.HasDash)
                 {
                     GetComponent<Collider2D>().enabled = false;
                 }
+
                 break;
         }
     }
@@ -50,9 +54,10 @@ public class Chest : InteractableObject
 
         if (Input.GetButtonDown("Action"))
         {
-            Time.timeScale = 0;
+            SoundManager.Instance.PlayRuneSound();
             animator.SetTrigger("Open");
             SetIsInteractionAllowed(false);
+            Time.timeScale = 0;
         }
     }
 
@@ -77,7 +82,15 @@ public class Chest : InteractableObject
         Time.timeScale = 1;
         transform.GetChild(0).gameObject.SetActive(false);
         gameObject.GetComponent<Collider2D>().enabled = false;
+
         // popup to let player know they got an upgrade
+        explanationCanvas.SetActive(true);
+        Invoke(nameof(HideExplanation), 5f);
+    }
+
+    private void HideExplanation()
+    {
+        explanationCanvas.SetActive(false);
     }
 
     public void StartParticles()
