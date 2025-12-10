@@ -26038,6 +26038,14 @@ PrefabInstance:
       propertyPath: 'spawnPoints.Array.data[2]'
       value: 
       objectReference: {fileID: 733615702}
+    - target: {fileID: 5237523406473106916, guid: d7312ab084abec0468dd0ed4455c66ef, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237523406473106916, guid: d7312ab084abec0468dd0ed4455c66ef, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 78cc463317ddf4a468ce3b634fd062bb, type: 3}
     - target: {fileID: 6176254052113714468, guid: d7312ab084abec0468dd0ed4455c66ef, type: 3}
       propertyPath: m_Name
       value: EssentialObjects

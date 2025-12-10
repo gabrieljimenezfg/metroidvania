@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     {
         var saveName = "data" + slot;
         Debug.Log("Buscando save " + saveName);
+        Time.timeScale = 1f;
         if (PlayerPrefs.HasKey(saveName))
         {
             Debug.Log("LoadGame" + slot);
@@ -34,9 +35,9 @@ public class MainMenuManager : MonoBehaviour
             GameManager.Instance.GameDataObject.PlayerMaxMana = 50;
             GameManager.Instance.GameDataObject.FireballDamage = 15;
             GameManager.Instance.GameDataObject.PlayerDamage = 25;
-            GameManager.Instance.GameDataObject.HeavyDamage  = 50;
-            GameManager.Instance.GameDataObject.PlayerMaxJumps  = 1;
-            
+            GameManager.Instance.GameDataObject.HeavyDamage = 50;
+            GameManager.Instance.GameDataObject.PlayerMaxJumps = 1;
+
             SceneManager.LoadScene(1);
         }
     }
