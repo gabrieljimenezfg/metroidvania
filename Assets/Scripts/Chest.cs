@@ -25,6 +25,12 @@ public class Chest : InteractableObject
                     GetComponent<Collider2D>().enabled = false;
                 }
                 break;
+            case GemType.Dash:
+                if (GameManager.Instance.GameDataObject.HasDash)
+                {
+                    GetComponent<Collider2D>().enabled = false;
+                }
+                break;
         }
     }
 
@@ -60,6 +66,7 @@ public class Chest : InteractableObject
             case GemType.TripleJump:
                 break;
             case GemType.Dash:
+                GameManager.Instance.GameDataObject.HasDash = true;
                 break;
             case GemType.ExtraDamage:
                 break;

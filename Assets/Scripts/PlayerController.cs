@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDashing()
     {
-        // if (!GameManager.Instance.GameDataObject.HasDash) return;
+        if (!GameManager.Instance.GameDataObject.HasDash) return;
         if (!Input.GetButtonDown("Dash") || isDashing) return;
         if (dashCooldownTimer < dashCooldown) return;
         if (!isGrounded && airDashed) return;
