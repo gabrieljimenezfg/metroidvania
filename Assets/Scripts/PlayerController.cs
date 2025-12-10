@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
 
     public event EventHandler AttackedSword;
-    
+    public event EventHandler SwordHit;
+
     private static readonly int DamageTaken = Animator.StringToHash("DamageTaken");
     private static readonly int PlayerDied = Animator.StringToHash("PlayerDied");
     private static readonly int IsKnocked = Animator.StringToHash("IsKnocked");
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundDistance = 0.5f;
     [SerializeField] private float fireballCooldown = 0.5f;
-    
+
     [SerializeField] private float dashStrength;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldown = 1f;
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Instance = this;
-        
+
         rb = GetComponent<Rigidbody2D>();
         fireballTimer = fireballCooldown;
         dashCooldownTimer = dashCooldown;
@@ -149,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
         fireballTimer += Time.deltaTime;
         dashCooldownTimer += Time.deltaTime;
-        
+
         if (comboCount == 0 && !isDashing)
         {
             CheckMovement();
@@ -179,7 +180,7 @@ public class PlayerController : MonoBehaviour
     private void ModifyGravityScale()
     {
         if (isDashing) return;
-        
+
         if (!isGrounded && rb.linearVelocity.y < 0.2f)
         {
             rb.gravityScale = fallingGravityScale;
@@ -259,6 +260,7 @@ public class PlayerController : MonoBehaviour
                 ? GameManager.Instance.GameDataObject.PlayerDamage
                 : GameManager.Instance.GameDataObject.HeavyDamage;
 
+            SwordHit?.Invoke(this, EventArgs.Empty);
             try
             {
                 collision.gameObject.GetComponent<EnemyController>().TakeDamage(damageToHit);

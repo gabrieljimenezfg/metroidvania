@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3a4af27a96776fe4ab0af68346677798, type: 3}
   - {fileID: 8300000, guid: cf4ea35654cd6814f87f76ff671e9a54, type: 3}
   - {fileID: 8300000, guid: 5c146da185fbea644b23e9f22310b064, type: 3}
+  swordHit:
+  - {fileID: 8300000, guid: 20b1843cbf04d2443be5a3991a328772, type: 3}

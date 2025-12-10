@@ -132,8 +132,7 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         LookAtPlayer();
 
-        // currentState = (BossStates)Random.Range(1, 5);
-        currentState = BossStates.Spikes;
+        currentState = (BossStates)Random.Range(1, 5);
         ChangeState();
     }
 

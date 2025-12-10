@@ -24,6 +24,12 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         PlayerController.Instance.AttackedSword += PlayerOnAttackedSword;
+        PlayerController.Instance.SwordHit += PlayerOnSwordHit;
+    }
+
+    private void PlayerOnSwordHit(object sender, EventArgs e)
+    {
+        PlaySound(soundRefsSO.swordHit, PlayerController.Instance.transform.position);
     }
 
     private void PlayerOnAttackedSword(object sender, EventArgs e)
