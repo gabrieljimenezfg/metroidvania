@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+
+    public event EventHandler AttackedSword;
+    
     private static readonly int DamageTaken = Animator.StringToHash("DamageTaken");
     private static readonly int PlayerDied = Animator.StringToHash("PlayerDied");
     private static readonly int IsKnocked = Animator.StringToHash("IsKnocked");
@@ -42,6 +46,13 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(this);
+        }
+
+        Instance = this;
+        
         rb = GetComponent<Rigidbody2D>();
         fireballTimer = fireballCooldown;
         dashCooldownTimer = dashCooldown;
@@ -177,6 +188,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = normalGravityScale;
         }
+    }
+
+    public void InvokeSwordAttacked()
+    {
+        AttackedSword?.Invoke(this, EventArgs.Empty);
     }
 
     private void SetComboCount(int combo)

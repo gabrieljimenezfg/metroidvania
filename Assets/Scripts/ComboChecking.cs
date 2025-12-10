@@ -10,11 +10,16 @@ public class ComboChecking : MonoBehaviour
         playerController = GetComponentInParent<PlayerController>();
     }
 
+    public void StartAttack()
+    {
+        playerController.InvokeSwordAttacked();
+    }
+
     public void FinishAttack1()
     {
-       playerController.CheckCombo1(); 
-    }    
-    
+        playerController.CheckCombo1();
+    }
+
     public void FinishAttack2()
     {
         playerController.CheckCombo2();
